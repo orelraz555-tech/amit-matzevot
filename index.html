@@ -384,12 +384,22 @@ footer .wrap{padding-bottom:1.9rem}}
 @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
 /* ═══ בנטו לגלריה + עומק ═══ */
+.gitem{display:flex; flex-direction:column; margin:0}
+.gitem .gshot{flex:1; min-height:0}
 .gitem:first-child{grid-column:1 / -1}
+@media (max-width:47rem){
+  .gal-grid{grid-template-columns:1fr 1fr; gap:1rem .8rem}
+  .gitem:first-child .gshot{aspect-ratio:16/11}
+  .gitem:not(:first-child) .gshot{aspect-ratio:1/1}
+}
 @media (min-width:47rem){
-  .gal-grid{grid-template-columns:repeat(3,1fr) !important; gap:1.5rem 1.25rem !important}
-  .gitem:first-child{grid-column:span 2; grid-row:span 2; display:flex; flex-direction:column}
-  .gitem:first-child .gshot{aspect-ratio:auto; flex:1; min-height:26rem}
-  .gitem:not(:first-child) .gshot{aspect-ratio:4/3}
+  .gal-grid{
+    grid-template-columns:repeat(3,1fr) !important;
+    grid-template-rows:16rem 16rem;
+    gap:1.4rem 1.25rem !important;
+  }
+  .gitem:first-child{grid-column:span 2; grid-row:span 2}
+  .gitem .gshot{aspect-ratio:auto}
 }
 .svc{box-shadow:0 1px 2px rgba(28,25,23,.04), 0 8px 20px -14px rgba(28,25,23,.14)}
 .svc:hover{box-shadow:0 2px 4px rgba(28,25,23,.05), 0 28px 54px -26px rgba(28,25,23,.26)}
