@@ -570,6 +570,21 @@ footer{background-color:var(--primary); border-top:1px solid #2C2620; color:#A79
 /* ── hero: deepen the film so it fuses into the dark page ── */
 .hero::after{background:linear-gradient(180deg, rgba(13,10,7,.86) 0%, rgba(13,10,7,.72) 40%, rgba(13,10,7,.97) 100%)}
 .hero::before{filter:saturate(.92) contrast(1.02)}
+
+/* ════════════════════════════════════════════════════════════
+   v5 — תיקוני מובייל: גלריה בטור יחיד (לא נחתכת) + פס CTA שנפתח אחרי ההירו
+   ════════════════════════════════════════════════════════════ */
+@media (max-width:47rem){
+  .gal-grid{grid-template-columns:1fr; gap:1.1rem; max-width:31rem; margin-inline:auto}
+  .gitem:first-child{grid-column:auto}
+  .gitem:first-child .gshot, .gitem:not(:first-child) .gshot{aspect-ratio:16/11}
+  .gitem figcaption{font-size:1rem; margin-top:.7rem}
+}
+/* פס ה-CTA התחתון נפתח רק אחרי שעוברים את ההירו (בהירו כבר יש טלפון+וואטסאפ) */
+.dock{transform:translateY(120%); transition:transform .4s cubic-bezier(.22,1,.36,1); will-change:transform}
+.dock.show{transform:none}
+@media (scripting:none){.dock{transform:none}}       /* ללא JS — מוצג תמיד */
+@media (prefers-reduced-motion:reduce){.dock{transition:none}}
 </style>
 <noscript><style>.reveal{opacity:1 !important; transform:none !important}</style></noscript>
 
@@ -830,6 +845,26 @@ footer{background-color:var(--primary); border-top:1px solid #2C2620; color:#A79
     ticking = false;
     var past = hero ? (window.scrollY > hero.offsetHeight - 120) : (window.scrollY > 500);
     fab.classList.toggle('show', past);
+  }
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+})();
+
+/* פס CTA תחתון במובייל — נפתח רק אחרי ההירו (בלוק עצמאי, לא תלוי בהעדפת התנועה) */
+(function () {
+  var dock = document.querySelector('.dock');
+  if (!dock) return;
+  var hero = document.querySelector('.hero');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var past = hero ? (window.scrollY > hero.offsetHeight - 90) : (window.scrollY > 480);
+    dock.classList.toggle('show', past);
   }
   window.addEventListener('scroll', function () {
     if (ticking) return;
