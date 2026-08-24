@@ -585,6 +585,21 @@ footer{background-color:var(--primary); border-top:1px solid #2C2620; color:#A79
 .dock.show{transform:none}
 @media (scripting:none){.dock{transform:none}}       /* ללא JS — מוצג תמיד */
 @media (prefers-reduced-motion:reduce){.dock{transition:none}}
+
+/* ════════════════════════════════════════════════════════════
+   v6 — הירו קומפקטי במובייל: שני כפתורי ה-CTA נכנסים במסך הפתיחה
+   (חותכים ריווח מיותר — לא תוכן). מדוד: חסך ~150px מגובה ההירו.
+   ════════════════════════════════════════════════════════════ */
+@media (max-width:47rem){
+  .topbar{padding-block:.7rem}
+  .hero{padding-block:2.2rem 1.6rem}
+  .hero h1{margin-top:.9rem}
+  .hero .sub{margin-top:.95rem; line-height:1.55}
+  .hero .trust-row{margin-top:1.25rem; gap:.4rem 1.3rem}
+  .cta-row{margin-top:1.5rem}
+  .hero .next-step{margin-top:1rem}
+  .hero-scroll{margin-top:1.3rem}
+}
 </style>
 <noscript><style>.reveal{opacity:1 !important; transform:none !important}</style></noscript>
 
