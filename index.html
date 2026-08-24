@@ -446,6 +446,130 @@ footer .wrap{padding-bottom:1.9rem}}
   .fab{transition:opacity .01ms}
 }
 @media print{ .fab{display:none !important} }
+
+/* ════════════════════════════════════════════════════════════
+   v4 — DARK LUXURY STONE  (בסוף הגיליון: כללים מאוחרים דורסים)
+   אבן כהה־חמה · זהב שמפניה · גרניט מלוטש מורם · צללים עמוקים
+   שומר על כל התוכן וההחלטות הסגורות; רק שכבת עיצוב.
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --bg:#15110D;            /* near-black warm stone            */
+  --card:#1E1811;          /* raised stone panel               */
+  --fg:#F3EDE3;            /* warm off-white                   */
+  --fg-2:#BEB3A2;          /* muted body                       */
+  --fg-3:#948A79;          /* faint captions                   */
+  --primary:#0D0A07;       /* deepest — feature bands / footer */
+  --on-primary:#F3EDE3;
+  --on-primary-2:#C9BEAC;
+  --gold:#D8B36A;          /* champagne gold                   */
+  --gold-soft:rgba(216,179,106,.12);
+  --border:#2E2820;
+  --border-2:#3D362C;
+}
+/* focus ring — brighter gold on the now-dark page */
+:root, .band, .contact, footer{--gold:#D8B36A}
+::selection{background:rgba(216,179,106,.28); color:#FFF7E8}
+
+/* ── canvas: dark stone grain + faint gold crown glow ── */
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(120% 70% at 50% -8%, rgba(216,179,106,.07), transparent 58%),
+    linear-gradient(rgba(15,12,9,.88), rgba(15,12,9,.93)),
+    var(--tex-light);
+  background-size:auto, auto, 760px;
+  background-repeat:no-repeat, no-repeat, repeat;
+}
+
+/* ── topbar: smoked glass ── */
+.topbar-bg{background:rgba(18,14,10,.72); border-bottom:1px solid var(--border)}
+@supports not (backdrop-filter:blur(1px)){.topbar-bg{background:rgba(18,14,10,.97)}}
+.brand svg{color:var(--gold)}
+
+/* ── stats: engraved bar ── */
+.stats{
+  background:linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.14));
+  border-block:1px solid var(--border);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04), inset 0 -1px 0 rgba(0,0,0,.3);
+}
+.stat b{color:var(--fg)}
+
+/* ── section headings: subtle champagne gradient (with safe fallback) ── */
+.shead h2, .band h2, .contact h2{color:#F5EEDF}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .shead h2, .band h2, .contact h2{
+    background:linear-gradient(180deg,#F7F1E6 0%,#E7D9BE 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+  }
+}
+
+/* ── services: raised stone cards, gold-lit on hover ── */
+.svc{
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  border:1px solid var(--border);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),
+             0 2px 6px rgba(0,0,0,.35), 0 20px 40px -26px rgba(0,0,0,.7);
+}
+.svc:hover{
+  border-color:rgba(216,179,106,.42);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),
+             0 4px 10px rgba(0,0,0,.4), 0 34px 60px -28px rgba(0,0,0,.8),
+             0 0 0 1px rgba(216,179,106,.12);
+}
+.svc-ic{
+  background:var(--gold-soft); color:var(--gold);
+  border:1px solid rgba(216,179,106,.28);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* ── gallery: dark vault so the stone pops, framed in gold hairline ── */
+.gal{
+  background:#100C08;
+  border-block:1px solid rgba(216,179,106,.16);
+  box-shadow:inset 0 1px 0 rgba(0,0,0,.5);
+}
+.gshot{
+  border:1px solid var(--border-2); background:var(--card);
+  box-shadow:0 2px 8px rgba(0,0,0,.5), 0 30px 60px -30px rgba(0,0,0,.85);
+}
+
+/* ── FAQ card (desktop): raised stone ── */
+@media (min-width:47rem){
+  .faq{
+    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012));
+    border:1px solid var(--border);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 30px 60px -40px rgba(0,0,0,.8);
+  }
+}
+
+/* ── feature bands: warm polished-granite panels, gold-framed ── */
+.band, .contact{
+  background-color:#1F1710;
+  border-block:1px solid rgba(216,179,106,.22);
+}
+.band{background-image:radial-gradient(120% 100% at 78% 0%, rgba(216,179,106,.15), transparent 60%)}
+.contact{background-image:radial-gradient(110% 100% at 20% 100%, rgba(216,179,106,.17), transparent 58%)}
+.chips span{border-color:rgba(216,179,106,.24); background:rgba(0,0,0,.18)}
+.chips i{border-color:rgba(216,179,106,.4); color:var(--gold)}
+.band .btn-gold, .contact .btn-gold{
+  background:linear-gradient(180deg,#E4C57E,#C99C4E); color:#1A130B; border-color:#E4C57E;
+  box-shadow:0 2px 0 rgba(0,0,0,.15), 0 14px 30px -14px rgba(216,179,106,.55);
+}
+.tel-big{color:var(--on-primary)}
+
+/* ── footer: sits on deepest stone ── */
+footer{background-color:var(--primary); border-top:1px solid #2C2620; color:#A79D8E}
+
+/* ── mobile dock: smoked glass ── */
+.dock{background:rgba(18,14,10,.94); border-top:1px solid var(--border)}
+.dock .w{background:linear-gradient(180deg,#E4C57E,#C99C4E); color:#1A130B}
+.dock .c{color:var(--fg); border:1px solid rgba(255,255,255,.28)}
+@supports not (backdrop-filter:blur(1px)){.dock{background:rgba(18,14,10,.99)}}
+
+/* ── hero: deepen the film so it fuses into the dark page ── */
+.hero::after{background:linear-gradient(180deg, rgba(13,10,7,.86) 0%, rgba(13,10,7,.72) 40%, rgba(13,10,7,.97) 100%)}
+.hero::before{filter:saturate(.92) contrast(1.02)}
 </style>
 <noscript><style>.reveal{opacity:1 !important; transform:none !important}</style></noscript>
 
