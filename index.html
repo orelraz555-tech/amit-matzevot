@@ -603,6 +603,17 @@ footer{background-color:var(--primary); border-top:1px solid #2C2620; color:#A79
   .hero .next-step{margin-top:1rem}
   .hero-scroll{margin-top:1.3rem}
 }
+
+/* ── v7 — שורת קרדיט בפוטר (הצעת דף נחיתה) ── */
+footer .foot-info{padding-bottom:1rem}
+footer .foot-credit{
+  padding-block:1.05rem 7rem; margin-top:.2rem;
+  border-top:1px solid #2C2620;
+  gap:.3rem .55rem; font-size:.82rem; color:#8A8072; font-weight:300;
+}
+footer .foot-credit a{color:var(--gold); text-decoration:none; letter-spacing:.03em}
+footer .foot-credit a:hover{text-decoration:underline}
+@media (min-width:47rem){footer .foot-credit{padding-bottom:1.9rem}}
 </style>
 <noscript><style>.reveal{opacity:1 !important; transform:none !important}</style></noscript>
 
@@ -794,11 +805,15 @@ footer{background-color:var(--primary); border-top:1px solid #2C2620; color:#A79
   </main>
 
   <footer>
-    <div class="wrap">
+    <div class="wrap foot-info">
       <span>עמית מצבות אבן ושיש</span><span class="sep">·</span>
       <span>עמית חדד</span><span class="sep">·</span>
       <span>שירות בכל הארץ</span><span class="sep">·</span>
       <a href="tel:+972523631022" dir="ltr" style="color:inherit">052-363-1022</a>
+    </div>
+    <div class="wrap foot-credit">
+      <span>רוצים דף נחיתה כזה לעסק שלכם?</span>
+      <a href="mailto:orelraz555@gmail.com?subject=%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94" dir="ltr">orelraz555@gmail.com</a>
     </div>
   </footer>
 
